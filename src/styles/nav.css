@@ -1,0 +1,11 @@
+nav {
+  max-width: 1260px;
+  height: 3.4rem;
+  margin: auto;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+}
+
+.logo {
+  height: 100%;
+}
