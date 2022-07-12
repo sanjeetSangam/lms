@@ -1,7 +1,9 @@
 import React from "react";
-import { Navbar } from "../components/Navbar";
+
 export const Home = () => {
-  return <div>
-     <Navbar />
-  </div>;
+  return (
+    <div className="container">
+      <section>home</section>
+    </div>
+  );
 };
