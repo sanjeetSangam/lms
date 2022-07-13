@@ -2,14 +2,14 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBjUyIFPuolvGMjKrj2INaL4_FrMIO3mZY",
-  authDomain: "facebook-c202d.firebaseapp.com",
-  databaseURL: "https://facebook-c202d-default-rtdb.firebaseio.com",
-  projectId: "facebook-c202d",
-  storageBucket: "facebook-c202d.appspot.com",
-  messagingSenderId: "355449936079",
-  appId: "1:355449936079:web:c23dd141d4d92b18537fba",
-  measurementId: "G-YHMQXBWHHM",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DB,
+  projectId: process.env.REACT_APP_PRO,
+  storageBucket: process.env.REACT_APP_STORE,
+  messagingSenderId: process.env.REACT_APP_MSG,
+  appId: process.env.REACT_APP_APP,
+  measurementId: process.env.REACT_APP_MSR,
 };
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
