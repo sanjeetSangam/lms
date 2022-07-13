@@ -41,10 +41,28 @@ nav {
   border-bottom: 1.2px solid #52575f;
 }
 
+.username {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .username p:hover {
   border: transparent;
 }
 
 .username p {
   padding: 1.5rem 0;
+}
+
+.username button {
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  background: rgb(156, 34, 34);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
 }

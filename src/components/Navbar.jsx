@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Logo } from "./Logo";
 import "../styles/nav.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../redux/action";
+import { AiOutlinePoweroff } from "react-icons/ai";
 
 export const Navbar = () => {
+  let user = useSelector((store) => store.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!user.name) {
+      const loggedUser = JSON.parse(localStorage.getItem("lmsLogin"));
+      dispatch(addUser(loggedUser));
+    }
+  }, []);
+
+  const signOut = () => {
+    localStorage.removeItem("lmsLogin");
+    navigate("/login");
+  };
+
   return (
     <nav>
       <div className="nav__container">
@@ -38,7 +57,10 @@ export const Navbar = () => {
         </div>
 
         <div className="username">
-          <p>Sanjeet Kumar Sangam (fw13_175)</p>
+          <p>{user?.name}</p>
+          <button onClick={signOut}>
+            <AiOutlinePoweroff />
+          </button>
         </div>
       </div>
 
