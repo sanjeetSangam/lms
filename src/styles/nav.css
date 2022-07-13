@@ -3,6 +3,7 @@ nav {
   color: #747b87;
   font-size: 14px;
   background: #ffff;
+  border-bottom: 0.2px solid rgb(226, 226, 226);
 }
 
 .nav__container {

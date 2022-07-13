@@ -21,8 +21,20 @@ section {
   max-width: 1260px;
   margin: auto;
   padding: 0.5rem 0.8rem;
+  background: white;
 }
 
-hr {
-  border: 0.5px solid rgb(216, 215, 215);
+.list {
+  padding: 0;
+  border: 0.2px solid rgb(226, 226, 226);
+  border-radius: 0.3rem;
+}
+
+.title {
+  background: white;
+  padding: 1.5rem 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0 5px -1px,
+    rgba(0, 0, 0, 0.06) 0px 0 2px -1px;
+  color: #1f2936;
+  margin-bottom: 2rem;
 }
