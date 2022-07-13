@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Logo } from "../components/Logo";
 import "../styles/login.css";
 import { auth, provider } from "../firebase/firebaseMain";
@@ -9,6 +9,13 @@ import { addUser } from "../redux/action";
 export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedUser = JSON.parse(localStorage.getItem("lmsLogin"));
+    if (loggedUser) {
+      navigate("/");
+    }
+  }, []);
 
   const signIn = () => {
     auth
