@@ -1,0 +1,37 @@
+.login {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.logo__login .logo {
+  height: 5rem;
+}
+
+.login button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+  border: 1px solid #515151;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.login button:hover {
+  background: #212121;
+  color: white;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.login__box {
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  padding: 3rem 1rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}

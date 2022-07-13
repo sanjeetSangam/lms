@@ -1,12 +1,13 @@
 nav {
   width: 100%;
+  color: #747b87;
+  font-size: 14px;
+  background: #ffff;
 }
 
 .nav__container {
   max-width: 1260px;
-  height: 3.4rem;
   margin: auto;
-  padding: 0.5rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,4 +30,21 @@ nav {
 
 .logo__menu ul li {
   list-style: none;
+  padding: 1.5rem 0;
+  border: 1px solid transparent;
+}
+
+.logo__menu ul li:hover,
+.username p:hover {
+  color: #52575f;
+  cursor: pointer;
+  border-bottom: 1.2px solid #52575f;
+}
+
+.username p:hover {
+  border: transparent;
+}
+
+.username p {
+  padding: 1.5rem 0;
 }
