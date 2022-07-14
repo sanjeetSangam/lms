@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/action";
 import { AiOutlinePoweroff } from "react-icons/ai";
+import { Logout } from "./Logout";
 
 export const Navbar = () => {
   let user = useSelector((store) => store.user);
@@ -58,9 +59,7 @@ export const Navbar = () => {
 
         <div className="username">
           <p>{user?.name}</p>
-          <button onClick={signOut}>
-            <AiOutlinePoweroff />
-          </button>
+          <Logout userType={"lmsLogin"} />
         </div>
       </div>
     </nav>

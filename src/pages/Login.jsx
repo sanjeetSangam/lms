@@ -22,8 +22,11 @@ export const Login = () => {
 
   useEffect(() => {
     const loggedUser = JSON.parse(localStorage.getItem("lmsLogin"));
+    const admin = JSON.parse(localStorage.getItem("adminlms"));
     if (loggedUser) {
       navigate("/");
+    } else if (admin) {
+      navigate("/admin");
     }
   }, []);
 
@@ -57,7 +60,7 @@ export const Login = () => {
 
         if (userData.name === "Sanjeet Kumar Sangam") {
           dispatch(addUser(userData));
-          localStorage.setItem("lmsLogin", JSON.stringify(userData));
+          localStorage.setItem("adminlms", JSON.stringify(userData));
           navigate("/admin");
         } else {
           toast.error("User not registed as admin", toastOptions);
@@ -77,10 +80,29 @@ export const Login = () => {
           </div>
 
           <div className="form">
-            <button onClick={signIn}>Login with Google</button>
+            <form action="" onSubmit={signIn}>
+              <label>Email</label>
+              <input type="text" />
+              <label>Password</label>
+              <input type="text" />
+              <button>Login</button>
+              <div className="form admin">
+                <button onClick={adminSign}>Login as Admin</button>
+              </div>
+            </form>
           </div>
-          <div className="form admin">
-            <button onClick={adminSign}>Login as Admin</button>
+
+          <div className="registerForm">
+            <p>
+              No account!{" "}
+              <span
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                Register
+              </span>{" "}
+            </p>
           </div>
         </div>
       </div>

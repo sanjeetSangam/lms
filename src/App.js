@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { Lectures } from "./pages/Lectures";
 import { Login } from "./pages/Login";
 import { useEffect } from "react";
+import { Register } from "./pages/Register";
 
 function App() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/lectures" element={<Lectures />} />
         <Route path="/assignments" element={<Assignments />} />
         <Route path="/admin" element={<Admin />} />

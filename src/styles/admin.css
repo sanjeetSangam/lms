@@ -1,0 +1,18 @@
+.admin__nav {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  justify-content: space-between;
+}
+
+.user__admin {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user__admin img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
