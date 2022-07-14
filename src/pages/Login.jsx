@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Logo } from "../components/Logo";
 import "../styles/login.css";
-import { auth, db, provider } from "../firebase/firebaseMain";
+import { auth } from "../firebase/firebaseMain";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/action";
