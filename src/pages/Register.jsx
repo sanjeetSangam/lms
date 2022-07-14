@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +10,16 @@ export const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [cpassword, setCPassword] = useState();
+
+  useEffect(() => {
+    const loggedUser = JSON.parse(localStorage.getItem("lmslogin"));
+    const admin = JSON.parse(localStorage.getItem("adminlms"));
+    if (loggedUser) {
+      navigate("/");
+    } else if (admin) {
+      navigate("/admin");
+    }
+  }, []);
 
   const toastOptions = {
     position: "bottom-right",

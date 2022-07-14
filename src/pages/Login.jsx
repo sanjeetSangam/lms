@@ -23,7 +23,7 @@ export const Login = () => {
   };
 
   useEffect(() => {
-    const loggedUser = JSON.parse(localStorage.getItem("lmsLogin"));
+    const loggedUser = JSON.parse(localStorage.getItem("lmslogin"));
     const admin = JSON.parse(localStorage.getItem("adminlms"));
     if (loggedUser) {
       navigate("/");

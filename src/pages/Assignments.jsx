@@ -1,9 +1,17 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { AssingmentCard } from "../components/AssingmentCard";
 import { Navbar } from "../components/Navbar";
+import { getAssignments } from "../routes/routes";
 import "../styles/assignment.css";
 
 export const Assignments = () => {
+  const [assignments, setAssignments] = useState([]);
+
+  useEffect(() => {
+    axios.get(getAssignments).then(({ data }) => setAssignments(data));
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -13,10 +21,29 @@ export const Assignments = () => {
         </section>
       </div>
       <section className="list">
-        <AssingmentCard />
-        <AssingmentCard />
-        <AssingmentCard />
-        <AssingmentCard />
+        {assignments.length > 0 &&
+          assignments.map(
+            ({
+              _id,
+              title,
+              time,
+              date,
+              author,
+              assignmentType,
+              problemType,
+            }) => (
+              <div key={_id}>
+                <AssingmentCard
+                  title={title}
+                  time={time}
+                  date={date}
+                  author={author}
+                  assignmentType={assignmentType}
+                  problemType={problemType}
+                />
+              </div>
+            )
+          )}
       </section>
       ;
     </div>
