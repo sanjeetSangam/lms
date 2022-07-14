@@ -13,7 +13,7 @@ export const Navbar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!user.name) {
+    if (!user.email) {
       const loggedUser = JSON.parse(localStorage.getItem("lmsLogin"));
       dispatch(addUser(loggedUser));
     }
@@ -58,7 +58,7 @@ export const Navbar = () => {
         </div>
 
         <div className="username">
-          <p>{user?.name}</p>
+          <p>{user?.email}</p>
           <Logout userType={"lmsLogin"} />
         </div>
       </div>

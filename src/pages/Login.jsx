@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Logo } from "../components/Logo";
 import "../styles/login.css";
-import { auth, provider } from "../firebase/firebaseMain";
+import { auth, db, provider } from "../firebase/firebaseMain";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/action";
@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const toastOptions = {
     position: "bottom-right",
@@ -30,45 +32,48 @@ export const Login = () => {
     }
   }, []);
 
-  const signIn = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
+  const signIn = async (e) => {
+    e.preventDefault();
+
+    if (email && password) {
+      try {
+        let { user } = await auth.signInWithEmailAndPassword(email, password);
         let userData = {
-          name: result.user.displayName,
-          email: result.user.email,
-          profileUrl: result.user.photoURL,
+          email: user.email,
         };
+        localStorage.setItem("lmslogin", JSON.stringify(userData));
         dispatch(addUser(userData));
-        localStorage.setItem("lmsLogin", JSON.stringify(userData));
         navigate("/");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+      } catch (error) {
+        toast.error(error.message, toastOptions);
+      }
+    } else {
+      toast.error("Please fill details", toastOptions);
+    }
   };
 
   const adminSign = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        let userData = {
-          name: result.user.displayName,
-          email: result.user.email,
-          profileUrl: result.user.photoURL,
-        };
+    toast("Not implemented yet! Please be patient");
+    // auth
+    //   .signInWithPopup(provider)
+    //   .then((result) => {
+    //     let userData = {
+    //       name: result.user.displayName,
+    //       email: result.user.email,
+    //       profileUrl: result.user.photoURL,
+    //     };
 
-        if (userData.name === "Sanjeet Kumar Sangam") {
-          dispatch(addUser(userData));
-          localStorage.setItem("adminlms", JSON.stringify(userData));
-          navigate("/admin");
-        } else {
-          toast.error("User not registed as admin", toastOptions);
-        }
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    //     if (userData.name === "Sanjeet Kumar Sangam") {
+    //       dispatch(addUser(userData));
+    //       localStorage.setItem("adminlms", JSON.stringify(userData));
+    //       navigate("/admin");
+    //     } else {
+    //       toast.error("User not registed as admin", toastOptions);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error.message);
+    //   });
   };
 
   return (
@@ -82,9 +87,12 @@ export const Login = () => {
           <div className="form">
             <form action="" onSubmit={signIn}>
               <label>Email</label>
-              <input type="text" />
+              <input type="email" onChange={(e) => setEmail(e.target.value)} />
               <label>Password</label>
-              <input type="text" />
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <button>Login</button>
               <div className="form admin">
                 <button onClick={adminSign}>Login as Admin</button>
