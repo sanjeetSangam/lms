@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AdminNavbar } from "./AdminNavbar";
 import "../styles/admin.css";
 import axios from "axios";
-import { postLecture } from "../routes/routes";
+import { getLectures, postLecture } from "../routes/routes";
 import { CircularProgress } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +16,7 @@ export const AdminLecture = () => {
     lectureType: null,
   });
   const [loading, setLoading] = useState(false);
+  const [lectures, setLectures] = useState([]);
 
   const toastOptions = {
     position: "bottom-right",
@@ -24,6 +25,16 @@ export const AdminLecture = () => {
     draggable: true,
     theme: "dark",
   };
+
+  const allLect = () => {
+    axios.get(getLectures).then(({ data }) => {
+      setLectures(data);
+    });
+  };
+
+  useEffect(() => {
+    allLect();
+  }, []);
 
   const handleInput = (e) => {
     setLoading(false);
@@ -40,6 +51,7 @@ export const AdminLecture = () => {
       try {
         let res = await axios.post(postLecture, lectureData);
         setLoading(false);
+        allLect();
         toast.success("Lecture added", toastOptions);
       } catch (error) {
         toast.error(error.message, toastOptions);
@@ -57,7 +69,9 @@ export const AdminLecture = () => {
         <AdminNavbar />
 
         <div className="title">
-          <h2>Add Lecture</h2>
+          <section>
+            <h2>Add Lecture ({lectures.length}) </h2>
+          </section>
         </div>
         <section className="lectures">
           <div className="form__upload">

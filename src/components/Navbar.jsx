@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import { Logo } from "./Logo";
 import "../styles/nav.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/action";
-import { AiOutlinePoweroff } from "react-icons/ai";
 import { Logout } from "./Logout";
 
 export const Navbar = () => {
   let user = useSelector((store) => store.user);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  let activestyle = {
+    color: "#2b3036",
+    cursor: "pointer",
+    fontWeight: "bold",
+    borderBottom: "1.2px solid #52575f",
+  };
 
   useEffect(() => {
     if (!user?.email) {
@@ -28,27 +33,33 @@ export const Navbar = () => {
           </Link>
 
           <ul>
-            <Link to="/lectures">
+            <NavLink
+              to="/lectures"
+              style={({ isActive }) => (isActive ? activestyle : undefined)}
+            >
               <li>Lectures</li>
-            </Link>
-            <Link to="/assignments">
+            </NavLink>
+            <NavLink
+              to="/assignments"
+              style={({ isActive }) => (isActive ? activestyle : undefined)}
+            >
               <li>Assignments</li>
-            </Link>
-            <Link to="/">
+            </NavLink>
+            <NavLink to="/">
               <li>Quizzes</li>
-            </Link>
-            <Link to="/">
+            </NavLink>
+            <NavLink to="/">
               <li>Tickets</li>
-            </Link>
-            <Link to="/">
+            </NavLink>
+            <NavLink to="/">
               <li>Discussions</li>
-            </Link>
-            <Link to="/">
+            </NavLink>
+            <NavLink to="/">
               <li>Notifications</li>
-            </Link>
-            <Link to="/">
+            </NavLink>
+            <NavLink to="/">
               <li>Electives</li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
 

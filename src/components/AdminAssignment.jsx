@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AdminNavbar } from "./AdminNavbar";
 import "../styles/admin.css";
 import axios from "axios";
-import { postAssignment } from "../routes/routes";
+import { getAssignments, postAssignment } from "../routes/routes";
 import { CircularProgress } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +17,7 @@ export const AdminAssignment = () => {
     problemType: null,
     assignmentProblems: [],
   });
+  const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [problemText, setProblemText] = useState("");
 
@@ -27,6 +28,16 @@ export const AdminAssignment = () => {
     draggable: true,
     theme: "dark",
   };
+
+  const allAss = () => {
+    axios.get(getAssignments).then(({ data }) => {
+      setAssignments(data);
+    });
+  };
+
+  useEffect(() => {
+    allAss();
+  }, []);
 
   const addProb = () => {
     if (problemText.length > 0) {
@@ -71,6 +82,7 @@ export const AdminAssignment = () => {
       try {
         await axios.post(postAssignment, lectureData);
         setLoading(false);
+        allAss();
         toast.success("Assignment added", toastOptions);
       } catch (error) {
         toast.error(error.message, toastOptions);
@@ -81,13 +93,16 @@ export const AdminAssignment = () => {
       setLoading(false);
     }
   };
+
   return (
     <>
       <div>
         <AdminNavbar />
 
         <div className="title">
-          <h2>Add Assignment</h2>
+          <section>
+            <h2>Add Assignment ({assignments?.length})</h2>
+          </section>
         </div>
         <section className="lectures">
           <div className="form__upload">
@@ -126,7 +141,7 @@ export const AdminAssignment = () => {
               </select>
 
               <div className="probelms">
-                <label htmlFor="">Add Assignment Problems</label>
+                <label htmlFor="">Add Assignment Problems (Mandatory) </label>
 
                 <div className="add">
                   <input

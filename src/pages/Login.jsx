@@ -120,7 +120,7 @@ export const Login = () => {
               </button>
               <div className="form admin">
                 <button type="button" onClick={adminSign}>
-                  {loading ? "Checking User..." : "Login as Admin"}
+                  {adminLoading ? "Checking User..." : "Login as Admin"}
                 </button>
               </div>
             </form>

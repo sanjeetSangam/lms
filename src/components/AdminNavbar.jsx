@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Logout } from "./Logout";
 import "../styles/admin.css";
@@ -11,6 +11,13 @@ export const AdminNavbar = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  let activestyle = {
+    color: "#2b3036",
+    cursor: "pointer",
+    fontWeight : "bold",
+    borderBottom: "1.2px solid #52575f",
+  };
 
   useEffect(() => {
     const admin = JSON.parse(localStorage.getItem("adminlms"));
@@ -30,13 +37,19 @@ export const AdminNavbar = () => {
 
         <div className="menus__admin">
           <ul>
-            <Link to="/admin/lecture">
+            <NavLink
+              to="/admin/lecture"
+              style={({ isActive }) => (isActive ? activestyle : undefined)}
+            >
               <li>Lectures</li>
-            </Link>
+            </NavLink>
 
-            <Link to="/admin/assignment">
+            <NavLink
+              to="/admin/assignment"
+              style={({ isActive }) => (isActive ? activestyle : undefined)}
+            >
               <li>Assignments</li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
 
