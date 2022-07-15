@@ -1,8 +1,13 @@
 .admin__nav {
   display: flex;
   align-items: center;
-  padding: 0.5rem 2rem;
+
   justify-content: space-between;
+}
+
+.admin__nav .nav__container {
+  justify-content: space-between;
+  width: 1260px;
 }
 
 .user__admin {
@@ -15,4 +20,22 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+.menus__admin ul {
+  display: flex;
+  gap: 5rem;
+  padding: 0 2rem;
+}
+
+.menus__admin ul li {
+  list-style: none;
+  cursor: pointer;
+  padding: 2rem 2rem;
+  border: transparent;
+}
+
+.menus__admin ul li:hover {
+  color: rgb(1, 54, 97);
+  border-bottom: 0.2px solid rgb(1, 54, 97);
 }

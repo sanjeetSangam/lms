@@ -59,7 +59,7 @@ export const Navbar = () => {
 
         <div className="username">
           <p>{user?.email}</p>
-          <Logout userType={"lmsLogin"} />
+          <Logout userType={"lmslogin"} />
         </div>
       </div>
     </nav>

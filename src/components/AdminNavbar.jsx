@@ -8,13 +8,21 @@ export const AdminNavbar = () => {
   console.log(user.profileUrl);
   return (
     <nav className="admin__nav">
-      <div className="logo">
-        <Logo />
-      </div>
+      <div className="nav__container">
+        <div className="logo">
+          <Logo />
+        </div>
 
-      <div className="user__admin">
-        <img src={"user?.profileUrl"} alt="admin" />
-        {user?.name} <Logout userType={"adminlms"} />
+        <div className="menus__admin">
+          <ul>
+            <li>Lectures</li>
+            <li>Assignments</li>
+          </ul>
+        </div>
+
+        <div className="user__admin">
+          {user?.email} <Logout userType={"adminlms"} />
+        </div>
       </div>
     </nav>
   );
