@@ -39,3 +39,91 @@
   color: rgb(1, 54, 97);
   border-bottom: 0.2px solid rgb(1, 54, 97);
 }
+
+.title h2 {
+  text-align: center;
+}
+
+.lectures {
+  padding: 2rem 0;
+}
+
+.form__upload {
+  width: 400px;
+  margin: auto;
+}
+
+.form__upload form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__upload form label {
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form__upload form input {
+  font-size: 16px;
+  border: 1px solid rgb(21, 82, 133);
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem 0;
+  border-radius: 0.5rem;
+}
+
+.form__upload form button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 16px;
+  margin: 1rem 0;
+  background: rgba(17, 54, 85, 0.877);
+  border: 1px solid transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.form__upload form select {
+  border: 1px solid gray;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.form__upload form select option {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 16px;
+}
+
+.probelms .add {
+  display: flex;
+  flex-direction: column;
+}
+
+.probelms .add > input {
+  border: 1px solid gray;
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem 0;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.probelms .add > button {
+  background: rgb(42, 2, 61);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem 0;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.post {
+  background: rgb(4, 26, 99);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem 0;
+  border-radius: 0.5rem;
+  width: 100%;
+}

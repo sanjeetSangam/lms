@@ -5,4 +5,4 @@ export const getAssignments = `${host}/api/assignments`;
 export const getOneAssignment = `${host}/api/assignments`;
 
 export const postLecture = `${host}/api/lectures/postlectures`;
-export const postAssignment = `${host}/api/lectures/postAssignment`;
+export const postAssignment = `${host}/api/assignments/postAssignment`;

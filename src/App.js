@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { Admin } from "./pages/Admin";
+import { AdminAssignment } from "./components/AdminAssignment";
+import { AdminLecture } from "./components/AdminLecture";
 import { Assignments } from "./pages/Assignments";
 import { Home } from "./pages/Home";
 import { Lectures } from "./pages/Lectures";
@@ -14,7 +15,11 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/lectures" element={<Lectures />} />
       <Route path="/assignments" element={<Assignments />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin">
+        <Route index element={<AdminLecture />} />
+        <Route path="lecture" element={<AdminLecture />} />
+        <Route path="assignment" element={<AdminAssignment />} />
+      </Route>
     </Routes>
   );
 }

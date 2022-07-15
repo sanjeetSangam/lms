@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Logout } from "./Logout";
+import "../styles/admin.css";
 
 export const AdminNavbar = () => {
   const user = useSelector((store) => store.user);
-  console.log(user.profileUrl);
   return (
     <nav className="admin__nav">
       <div className="nav__container">
@@ -15,8 +16,13 @@ export const AdminNavbar = () => {
 
         <div className="menus__admin">
           <ul>
-            <li>Lectures</li>
-            <li>Assignments</li>
+            <Link to="/admin/lecture">
+              <li>Lectures</li>
+            </Link>
+
+            <Link to="/admin/assignment">
+              <li>Assignments</li>
+            </Link>
           </ul>
         </div>
 

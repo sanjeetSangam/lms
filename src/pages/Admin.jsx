@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { AdminLecture } from "../components/AdminLecture";
 import { AdminNavbar } from "../components/AdminNavbar";
 import { addUser } from "../redux/action";
-import "../styles/admin.css";
+
 
 export const Admin = () => {
   // const user = useSelector((store) => store.user);
@@ -21,8 +22,12 @@ export const Admin = () => {
 
   return (
     <div className="container">
-      <AdminNavbar />
-      <section>ADMIN</section>
+      
+      <section>
+        <Routes>
+          <Route path="lecture" element={<AdminLecture />} />
+        </Routes>
+      </section>
     </div>
   );
 };
