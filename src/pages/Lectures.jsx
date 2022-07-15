@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/lecture.css";
 import { LectureCard } from "../components/LectureCard";
 import { Navbar } from "../components/Navbar";
+import axios from "axios";
+import { getLectures } from "../routes/routes";
+import { CircularProgress } from "@mui/material";
 
 export const Lectures = () => {
+  const [lectures, setLectures] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get(getLectures).then(({ data }) => {
+      setLectures(data);
+      setLoading(false);
+    });
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -13,10 +26,26 @@ export const Lectures = () => {
         </section>
       </div>
       <section className="list">
-        <LectureCard />
-        <LectureCard />
-        <LectureCard />
-        <LectureCard />
+        {loading ? (
+          <div className="loading__status">
+            <CircularProgress />
+          </div>
+        ) : (
+          lectures.length > 0 &&
+          lectures.map(({ _id, author, date, time, lectureType, title }) => (
+            <div key={_id}>
+              <LectureCard
+                author={author}
+                date={date}
+                time={time}
+                lectureType={lectureType}
+                title={title}
+              />
+            </div>
+          ))
+        )}
+
+        {}
       </section>
       ;
     </div>

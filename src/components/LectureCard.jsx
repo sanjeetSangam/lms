@@ -1,16 +1,16 @@
 import React from "react";
 
-export const LectureCard = () => {
+export const LectureCard = ({ author, date, time, lectureType, title }) => {
   return (
     <div className="lectureCard">
       <div className="lecture__info">
-        <h3>Thrive Regular Standup [ Week 4 ]</h3>
-        <button>LIVE</button>
+        <h3>{title}</h3>
+        <button>{lectureType}</button>
       </div>
 
       <small>
-        <strong>Swanand</strong> Scheduled <strong>Coding</strong> at 13 Jul, 22
-        - 12:00 pm
+        <strong>{author}</strong> Scheduled <strong>{title}</strong> at {date} -{" "}
+        {time}
       </small>
     </div>
   );

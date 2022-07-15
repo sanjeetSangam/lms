@@ -71,7 +71,7 @@
 }
 
 .login form input:focus {
-  border: 1px solid red;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 .registerForm p span {

@@ -7,18 +7,7 @@ import { addUser } from "../redux/action";
 
 
 export const Admin = () => {
-  // const user = useSelector((store) => store.user);
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
-  useEffect(() => {
-    // const admin = JSON.parse(localStorage.getItem("adminlms"));
-    // if (admin) {
-    //   dispatch(addUser(admin));
-    // } else {
-    //   navigate("/login");
-    // }
-  }, []);
 
   return (
     <div className="container">

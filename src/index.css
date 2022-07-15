@@ -58,3 +58,34 @@ nav {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.loading__status {
+  margin: auto;
+  width: max-content;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.home .title section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home .title section button {
+  background: #1f2936;
+  color: white;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.home .title section button:hover {
+  background: #2f3e52;
+}
+
+.home__buttons {
+  display: flex;
+  gap: 1rem;
+}

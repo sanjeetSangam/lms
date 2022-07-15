@@ -1,0 +1,70 @@
+.homeCont {
+  padding: 1rem;
+}
+
+.homeCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.7rem 0.3rem;
+  border-radius: 0.3rem;
+  transition: 0.3s;
+}
+
+.homeCard:hover {
+  background: rgb(240, 240, 240);
+}
+
+.daily__info {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.card__time {
+  height: 100px;
+  width: 180px;
+  padding: 14px;
+  display: grid;
+  place-items: center;
+  background: #6366f1;
+  color: white;
+  border-radius: 0.2rem;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card__info h2 {
+  color: #6366f1;
+}
+
+.scrm {
+  background: #b8b9f5;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  color: #3335be;
+  margin-right: 10px;
+}
+
+.live {
+  background: #9ec9b7;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  color: #033d2a;
+}
+
+.details {
+  color: #747c86;
+}
+
+.card__info p {
+  color: #747c86;
+}
+
+.card__info p strong {
+  color: #5e636d;
+}

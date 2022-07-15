@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { HomeCard } from "../components/HomeCard";
 import { Navbar } from "../components/Navbar";
 import { addUser } from "../redux/action";
+import "../styles/home.css";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -19,9 +21,23 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container home">
       <Navbar />
-      <section>home</section>
+
+      <div className="title">
+        <section>
+          <h2>Today's Schedule</h2>
+
+          <div className="home__buttons">
+            <button>BOOKMARKS</button>
+            <button>REFER & EARN</button>
+          </div>
+        </section>
+      </div>
+
+      <section className="homeCont" >
+        <HomeCard />
+      </section>
     </div>
   );
 };

@@ -4,12 +4,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Logo } from "../components/Logo";
 import { auth } from "../firebase/firebaseMain";
+import { CircularProgress } from "@mui/material";
 
 export const Register = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [cpassword, setCPassword] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const loggedUser = JSON.parse(localStorage.getItem("lmslogin"));
@@ -31,6 +33,7 @@ export const Register = () => {
 
   const signUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (email && password && cpassword) {
       if (password === cpassword) {
         try {
@@ -40,15 +43,19 @@ export const Register = () => {
           );
 
           if (res) {
+            setLoading(false);
             navigate("/login");
           }
         } catch (er) {
+          setLoading(false);
           toast.error(er.message, toastOptions);
         }
       } else {
+        setLoading(false);
         toast.error("Password not matched", toastOptions);
       }
     } else {
+      setLoading(false);
       toast.error("Please fill all credentials", toastOptions);
     }
   };
@@ -74,7 +81,7 @@ export const Register = () => {
                 type="password"
                 onChange={(e) => setCPassword(e.target.value)}
               />
-              <button>Register</button>
+              <button>{loading ? <CircularProgress /> : "Register"}</button>
             </form>
           </div>
 

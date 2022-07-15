@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AssingmentCard } from "../components/AssingmentCard";
@@ -7,9 +8,13 @@ import "../styles/assignment.css";
 
 export const Assignments = () => {
   const [assignments, setAssignments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(getAssignments).then(({ data }) => setAssignments(data));
+    axios.get(getAssignments).then(({ data }) => {
+      setAssignments(data);
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -21,7 +26,12 @@ export const Assignments = () => {
         </section>
       </div>
       <section className="list">
-        {assignments.length > 0 &&
+        {loading ? (
+          <div className="loading__status">
+            <CircularProgress />
+          </div>
+        ) : (
+          assignments.length > 0 &&
           assignments.map(
             ({
               _id,
@@ -43,7 +53,8 @@ export const Assignments = () => {
                 />
               </div>
             )
-          )}
+          )
+        )}
       </section>
       ;
     </div>

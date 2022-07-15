@@ -7,12 +7,17 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../redux/action";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CircularProgress } from "@mui/material";
+import axios from "axios";
 
 export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(false);
+  const [country, setCountry] = useState(null);
 
   const toastOptions = {
     position: "bottom-right",
@@ -20,6 +25,11 @@ export const Login = () => {
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
+  };
+
+  const getData = async () => {
+    const { data } = await axios.get("https://geolocation-db.com/json/");
+    setCountry(data.country_name);
   };
 
   useEffect(() => {
@@ -30,10 +40,13 @@ export const Login = () => {
     } else if (admin) {
       navigate("/admin");
     }
+
+    getData();
   }, []);
 
   const signIn = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (email && password) {
       try {
@@ -43,37 +56,46 @@ export const Login = () => {
         };
         localStorage.setItem("lmslogin", JSON.stringify(userData));
         dispatch(addUser(userData));
+        setLoading(false);
         navigate("/");
       } catch (error) {
         toast.error(error.message, toastOptions);
+        setLoading(false);
       }
     } else {
       toast.error("Please fill details", toastOptions);
+      setLoading(false);
     }
   };
 
-  const adminSign = () => {
-    toast("Not implemented yet! Please be patient");
-    // auth
-    //   .signInWithPopup(provider)
-    //   .then((result) => {
-    //     let userData = {
-    //       name: result.user.displayName,
-    //       email: result.user.email,
-    //       profileUrl: result.user.photoURL,
-    //     };
+  const adminSign = async (e) => {
+    e.preventDefault();
 
-    //     if (userData.name === "Sanjeet Kumar Sangam") {
-    //       dispatch(addUser(userData));
-    //       localStorage.setItem("adminlms", JSON.stringify(userData));
-    //       navigate("/admin");
-    //     } else {
-    //       toast.error("User not registed as admin", toastOptions);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     toast.error(error.message);
-    //   });
+    setAdminLoading(true);
+
+    if (country === "India") {
+      if (email && password) {
+        try {
+          let { user } = await auth.signInWithEmailAndPassword(email, password);
+          let userData = {
+            email: user.email,
+          };
+          localStorage.setItem("adminlms", JSON.stringify(userData));
+          dispatch(addUser(userData));
+          setAdminLoading(false);
+          navigate("/");
+        } catch (error) {
+          toast.error(error.message, toastOptions);
+          setAdminLoading(false);
+        }
+      } else {
+        toast.error("Please fill details", toastOptions);
+        setAdminLoading(false);
+      }
+    } else {
+      toast.error("Admin not from INDIA and not authorized", toastOptions);
+      setAdminLoading(false);
+    }
   };
 
   return (
@@ -85,7 +107,7 @@ export const Login = () => {
           </div>
 
           <div className="form">
-            <form action="" onSubmit={signIn}>
+            <form action="">
               <label>Email</label>
               <input type="email" onChange={(e) => setEmail(e.target.value)} />
               <label>Password</label>
@@ -93,9 +115,13 @@ export const Login = () => {
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button>Login</button>
+              <button onClick={signIn} type="button">
+                {loading ? <CircularProgress /> : "Login"}
+              </button>
               <div className="form admin">
-                <button onClick={adminSign}>Login as Admin</button>
+                <button type="button" onClick={adminSign}>
+                  {loading ? "Checking User..." : "Login as Admin"}
+                </button>
               </div>
             </form>
           </div>

@@ -126,7 +126,7 @@ export const AdminAssignment = () => {
               </select>
 
               <div className="probelms">
-                <label htmlFor="">Add Assignemtn Problems</label>
+                <label htmlFor="">Add Assignment Problems</label>
 
                 <div className="add">
                   <input

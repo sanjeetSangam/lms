@@ -13,16 +13,11 @@ export const Navbar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!user.email) {
-      const loggedUser = JSON.parse(localStorage.getItem("lmsLogin"));
+    if (!user?.email) {
+      const loggedUser = JSON.parse(localStorage.getItem("lmslogin"));
       dispatch(addUser(loggedUser));
     }
   }, []);
-
-  const signOut = () => {
-    localStorage.removeItem("lmsLogin");
-    navigate("/login");
-  };
 
   return (
     <nav>
