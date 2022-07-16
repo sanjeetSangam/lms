@@ -10,6 +10,12 @@ export const AssingmentCard = ({
 }) => {
   return (
     <div className="assingmentCard">
+
+      <div className="__info">
+        
+      </div>
+
+
       <div className="assignment__info">
         <h3>{title}</h3>
         <button
@@ -20,7 +26,7 @@ export const AssingmentCard = ({
                 : assignmentType === "FULL STACK"
                 ? "purple"
                 : assignmentType === "BACKEND"
-                ? "yellow"
+                ? "#032727"
                 : "#16a34a",
           }}
         >

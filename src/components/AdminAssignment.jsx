@@ -122,10 +122,10 @@ export const AdminAssignment = () => {
                 className="assignmentType"
               >
                 <option value="">Select assignment type</option>
-                <option value="FRONTEND">Frontend</option>
+                <option value="FRONTEND">FRONTEND</option>
                 <option value="OJ">OJ</option>
                 <option value="FULL STACK">FULL STACK</option>
-                <option value="BACKEND">Backend</option>
+                <option value="BACKEND">BACKEND</option>
               </select>
 
               <select
@@ -137,7 +137,7 @@ export const AdminAssignment = () => {
                 <option value="">Select Problem type</option>
                 <option value="Evaluation Problem's">Evaluation</option>
                 <option value="Assignment Problem's">Assignment</option>
-                <option value="Cdoing Problem's">Coding</option>
+                <option value="Coding Problem's">Coding</option>
               </select>
 
               <div className="probelms">

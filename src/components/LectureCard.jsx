@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { compareDate } from "../logic/date";
 
 export const LectureCard = ({ author, date, time, lectureType, title }) => {
+  const [status, setStatus] = useState(undefined);
+
+  useEffect(() => {
+    // console.log(compareDate(date));
+
+    if (compareDate(date) === true) {
+      setStatus("PRESENT");
+      return;
+    }
+
+    setStatus(compareDate(date));
+  }, []);
+
   return (
     <div className="lectureCard">
       <div className="__info">
@@ -19,7 +32,18 @@ export const LectureCard = ({ author, date, time, lectureType, title }) => {
       </div>
 
       <div className="__status">
-        <button>{compareDate(date) ? "Scheduled" : "Present"}</button>
+        <button
+          style={{
+            background:
+              status === "UPCOMING"
+                ? "gray"
+                : status === "LIVE"
+                ? "GREEN"
+                : "#ac2102",
+          }}
+        >
+          {status}
+        </button>
       </div>
     </div>
   );
