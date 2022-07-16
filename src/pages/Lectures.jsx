@@ -47,7 +47,6 @@ export const Lectures = () => {
 
         {}
       </section>
-      ;
     </div>
   );
 };
