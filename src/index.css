@@ -94,7 +94,8 @@ nav {
   background: blue;
 }
 
-.lectureCard {
+.lectureCard,
+.assingmentCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
