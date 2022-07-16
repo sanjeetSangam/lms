@@ -13,12 +13,18 @@
 }
 
 .homeCard:hover {
-  background: rgb(240, 240, 240);
+  background: rgb(245, 245, 245);
 }
 
 .daily__info {
   display: flex;
   gap: 0.8rem;
+}
+
+.card__time p {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .card__time {
