@@ -5,7 +5,9 @@ export const LectureCard = ({ author, date, time, lectureType, title }) => {
     <div className="lectureCard">
       <div className="lecture__info">
         <h3>{title}</h3>
-        <button>{lectureType}</button>
+        <button style={{ background: lectureType === "REC" && "red" }}>
+          {lectureType}
+        </button>
       </div>
 
       <small>
